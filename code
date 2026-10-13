@@ -1,0 +1,67 @@
+public class AuctionPlatform {
+    private String productName;
+    private double startingPrice;
+    private double currentHighestBid;
+    private String highestBidder;
+
+    // Constructor
+    public AuctionPlatform(String productName, double startingPrice) {
+        // String manipulation: Convert product name to uppercase
+        this.productName = productName.toUpperCase();
+        this.startingPrice = startingPrice;
+        this.currentHighestBid = startingPrice;
+        this.highestBidder = "No Bids Yet";
+    }
+
+    // Method Overloading: Bidding with bidder name provided
+    public void placeBid(String bidderName, double amount) {
+        String formattedName = bidderName.toUpperCase();
+        System.out.println("Bidder Name        : " + formattedName);
+        System.out.printf("Bid Amount         : Rs. %.2f\n", amount);
+        
+        processBid(formattedName, amount);
+        System.out.println();
+    }
+
+    // Method Overloading: Anonymous bid (default bidder name)
+    public void placeBid(double amount) {
+        placeBid("Anonymous", amount);
+    }
+
+    // Helper method to validate and process bid
+    private void processBid(String bidderName, double amount) {
+        if (amount > currentHighestBid) {
+            this.currentHighestBid = amount;
+            this.highestBidder = bidderName;
+            System.out.println("Bid Status         : Bid Accepted");
+        } else {
+            System.out.println("Bid Status         : Bid Rejected - Bid Must Be Higher");
+        }
+    }
+
+    // Method to display auction summary upon close
+    public void closeAuction() {
+        System.out.println("---------- AUCTION SUMMARY ----------");
+        System.out.println("Product Name       : " + productName);
+        System.out.println("Winning Bidder     : " + highestBidder);
+        System.out.printf("Final Bid Amount   : Rs. %.2f\n", currentHighestBid);
+        System.out.println("=============================================");
+    }
+
+    public static void main(String[] args) {
+        System.out.println("========== ONLINE AUCTION PLATFORM ==========\n");
+
+        // Initialize product
+        AuctionPlatform laptopAuction = new AuctionPlatform("laptop", 50000.00);
+        System.out.println("Product Name       : " + laptopAuction.productName);
+        System.out.printf("Starting Price     : Rs. %.2f\n\n", laptopAuction.startingPrice);
+
+        // Process Bids
+        laptopAuction.placeBid("Ravi", 52000.00);
+        laptopAuction.placeBid("Priya", 55000.00);
+        laptopAuction.placeBid("Ravi", 53000.00);
+
+        // Close Auction and print summary
+        laptopAuction.closeAuction();
+    }
+}
