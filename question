@@ -1,0 +1,32 @@
+An online auction platform allows sellers to list products such as laptops, smartphones, and cameras for bidding. Store product details, including product name, starting price, and current highest bidder. Customers should be able to place bids with or without providing their details each time.
+Validate bids so that only amounts higher than the current highest bid are accepted. Process and compare bidder names, display product names in uppercase, and announce the winning bidder and final bid amount when the auction closes.
+Task: Develop a Java application to simulate this auction process using constructors, method overloading, and String manipulation.
+Expected Output:
+
+```
+========== ONLINE AUCTION PLATFORM ==========
+
+Product Name       : LAPTOP
+Starting Price     : Rs. 50000.00
+
+Bidder Name        : RAVI
+Bid Amount         : Rs. 52000.00
+Bid Status         : Bid Accepted
+
+Bidder Name        : PRIYA
+Bid Amount         : Rs. 55000.00
+Bid Status         : Bid Accepted
+
+Bidder Name        : RAVI
+Bid Amount         : Rs. 53000.00
+Bid Status         : Bid Rejected - Bid Must Be Higher
+
+---------- AUCTION SUMMARY ----------
+Product Name       : LAPTOP
+Winning Bidder     : PRIYA
+Final Bid Amount   : Rs. 55000.00
+=============================================
+
+```
+
+Note: The output is illustrative. Actual output should depend on the bids processed by the program.
